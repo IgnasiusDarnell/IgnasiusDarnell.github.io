@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+
+/* Reset Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    min-height: 90vh; /* Tinggi minimum satu layar penuh */
+    display: flex;
+    align-items: center;
+    padding: 60px 0; /* Tambahkan padding untuk estetika */
+}
+
+/* Menyesuaikan agar card lebih tinggi dan seimbang */
+.service-card, .product-card {
+    height: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
+    border-radius: 10px;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    font-size: clamp(14px, 1vw, 18px);
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+.navbar-brand {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-family: 'Playfair Display', serif;
+}
+
+.navbar-nav {
+    gap: 1.5rem;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('../assets/Jumbotron.png') no-repeat center center/cover;
+    min-height: 100vh;
+    color: white;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 36, 99, 0.7);
+    z-index: -1;
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-section .lead {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin: 1rem 0;
+}
+
+/* Hero Actions (Buttons & Marketplace) */
+.hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Marketplace Promo */
+.promo-marketplace {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.marketplace-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.marketplace-icon {
+    width: clamp(40px, 6vw, 50px);
+    height: clamp(40px, 6vw, 50px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.marketplace-btn:hover .marketplace-icon {
+    transform: scale(1.1);
+}
+
+/* Tokopedia Button */
+.btn-tokopedia {
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.btn-tokopedia:hover {
+    background: #379441;
+}
+
+/* Shopee Button */
+.btn-shopee {
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.btn-shopee:hover {
+    background: #d84321;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    width: clamp(40px, 5vw, 60px);
+    height: clamp(40px, 5vw, 60px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .hero-section {
+        min-height: 80vh;
+        padding: 60px 0;
+    }
+    .marketplace-icon {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 70vh;
+        padding: 40px 0;
+    }
+    .marketplace-icon {
+        width: 38px;
+        height: 38px;
+    }
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 662px) {
+    .hero-section {
+        min-height: 60vh;
+        padding: 30px 0;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .marketplace-icon {
+        width: 34px;
+        height: 34px;
+    }
+    .whatsapp-btn {
+        width: 40px;
+        height: 40px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .marketplace-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
