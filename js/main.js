@@ -28,4 +28,39 @@ window.addEventListener("scroll", () => {
     prevScrollPos = currentScrollPos;
 });
 
+// Testimonial Slider
+document.addEventListener("DOMContentLoaded", function () {
+    // Testimonial Slider
+    const track_reviews = document.querySelector(".testimonial-track");
+    const cards_reviews = document.querySelectorAll(".testimonial-card");
+    const cardWidth = cards_reviews[0].offsetWidth + 15; // Lebar card + margin
 
+    let position_reviews = 0;
+
+    function scrollTestimonials() {
+        position_reviews -= 1; // Geser ke kiri
+        if (position_reviews <= -cardWidth * cards_reviews.length) {
+            position_reviews = 0; // Kembali ke awal jika sudah mencapai akhir
+        }
+        track_reviews.style.transform = `translateX(${position_reviews}px)`;
+    }
+
+    setInterval(scrollTestimonials, 20); // Kecepatan scroll (20ms)
+
+    // Portfolio Slider
+    const track_porto = document.querySelector(".portfolio-track");
+    const items_porto = document.querySelectorAll(".portfolio-item");
+    const itemWidth = items_porto[0].offsetWidth + 15; // Lebar item + margin
+
+    let position_porto = 0;
+
+    function scrollPortfolio() {
+        position_porto += 1; // Geser ke kanan
+        if (position_porto >= itemWidth * items_porto.length) {
+            position_porto = 0; // Kembali ke awal jika sudah mencapai akhir
+        }
+        track_porto.style.transform = `translateX(-${position_porto}px)`;
+    }
+
+    setInterval(scrollPortfolio, 20); // Kecepatan scroll (20ms)
+});
