@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+z
 
 /* Reset Styles */
 * {
@@ -8,21 +9,26 @@
 }
 
 .section {
-    min-height: 90vh; /* Tinggi minimum satu layar penuh */
+    min-height: 90vh;
+    /* Tinggi minimum satu layar penuh */
     display: flex;
     align-items: center;
-    padding: 60px 0; /* Tambahkan padding untuk estetika */
+    padding: 60px 0;
+    /* Tambahkan padding untuk estetika */
 }
 
 /* Menyesuaikan agar card lebih tinggi dan seimbang */
-.service-card, .product-card {
+.service-card,
+.product-card {
     height: 100%;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Tambahkan efek bayangan */
     border-radius: 10px;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
@@ -187,12 +193,19 @@ html, body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-10px);
     }
+
     60% {
         transform: translateY(-5px);
     }
@@ -204,6 +217,7 @@ html, body {
         min-height: 80vh;
         padding: 60px 0;
     }
+
     .marketplace-icon {
         width: 42px;
         height: 42px;
@@ -215,14 +229,17 @@ html, body {
         min-height: 70vh;
         padding: 40px 0;
     }
+
     .marketplace-icon {
         width: 38px;
         height: 38px;
     }
+
     .navbar-nav {
         flex-direction: column;
         align-items: center;
     }
+
     .hero-actions {
         flex-direction: column;
         gap: 15px;
@@ -234,13 +251,16 @@ html, body {
         min-height: 60vh;
         padding: 30px 0;
     }
+
     .hero-section h1 {
         font-size: 2.5rem;
     }
+
     .marketplace-icon {
         width: 34px;
         height: 34px;
     }
+
     .whatsapp-btn {
         width: 40px;
         height: 40px;
@@ -253,79 +273,129 @@ html, body {
     .hero-section h1 {
         font-size: 2rem;
     }
+
     .marketplace-icon {
         width: 30px;
         height: 30px;
     }
 }
+
 /* Styling untuk slider */
 .testimonial-slider {
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 
 .testimonial-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    /* Optimasi untuk animasi */
 }
 
 .testimonial-card {
     flex: 0 0 auto;
-    width: calc(100% / 6); /* 6 card per baris */
-    margin-right: 15px; /* Jarak antar card */
+    width: calc(100% / 6);
+    /* 6 card per baris */
+    margin-right: 15px;
+    /* Jarak antar card */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    /* Animasi saat hover */
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+    /* Efek hover */
 }
 
 .testimonial-card img {
     width: 50px;
     height: 50px;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 .rating i {
     font-size: 14px;
+    color: #ffc107;
+    /* Warna bintang */
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .testimonial-card {
-        width: calc(100% / 3); /* 3 card per baris di layar kecil */
+        width: calc(100% / 3);
+        /* 3 card per baris di layar kecil */
     }
+
     .portfolio-item {
-        width: calc(100% / 2); /* 2 gambar per baris di layar kecil */
+        width: calc(100% / 2);
+        /* 2 gambar per baris di layar kecil */
     }
 }
-/* Styling untuk slider */
+
+/* Styling untuk slider portofolio */
 .portfolio-slider {
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 
 .portfolio-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    /* Optimasi untuk animasi */
 }
 
 .portfolio-item {
     flex: 0 0 auto;
-    width: calc(100% / 3); /* 3 gambar per baris */
-    margin-right: 15px; /* Jarak antar gambar */
-    box-sizing: border-box; /* Pastikan padding/margin tidak memengaruhi lebar */
+    width: calc(100% / 3);
+    /* 3 gambar per baris */
+    margin-right: 15px;
+    /* Jarak antar gambar */
+    box-sizing: border-box;
+    /* Pastikan padding/margin tidak memengaruhi lebar */
+    transition: transform 0.3s ease-in-out;
+    /* Animasi saat hover */
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+    /* Efek hover */
 }
 
 .portfolio-item img {
-    width: 100%; /* Gambar akan menyesuaikan lebar container */
-    height: 200px; /* Tinggi tetap untuk semua gambar */
-    object-fit: cover; /* Memastikan gambar tidak terdistorsi */
-    border-radius: 8px; /* Sudut melengkung */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    width: 100%;
+    /* Gambar akan menyesuaikan lebar container */
+    height: 200px;
+    /* Tinggi tetap untuk semua gambar */
+    object-fit: cover;
+    /* Memastikan gambar tidak terdistorsi */
+    border-radius: 8px;
+    /* Sudut melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Efek bayangan */
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .portfolio-item {
+        width: calc(100% / 2);
+        /* 2 gambar per baris di tablet */
+    }
+}
+
 @media (max-width: 576px) {
     .portfolio-item {
-        width: 100%; /* 1 gambar per baris di layar sangat kecil */
+        width: 100%;
+        /* 1 gambar per baris di mobile */
     }
 
     .portfolio-item img {
-        height: 250px; /* Tinggi lebih besar untuk layar kecil */
+        height: 250px;
+        /* Tinggi lebih besar untuk layar kecil */
     }
 }

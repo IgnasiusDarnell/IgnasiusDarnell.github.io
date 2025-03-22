@@ -28,7 +28,6 @@ window.addEventListener("scroll", () => {
     prevScrollPos = currentScrollPos;
 });
 
-// Testimonial Slider
 document.addEventListener("DOMContentLoaded", function () {
     // Testimonial Slider
     const track_reviews = document.querySelector(".testimonial-track");
@@ -36,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardWidth = cards_reviews[0].offsetWidth + 15; // Lebar card + margin
 
     let position_reviews = 0;
+    let animationFrameId;
 
     function scrollTestimonials() {
         position_reviews -= 1; // Geser ke kiri
@@ -43,9 +43,33 @@ document.addEventListener("DOMContentLoaded", function () {
             position_reviews = 0; // Kembali ke awal jika sudah mencapai akhir
         }
         track_reviews.style.transform = `translateX(${position_reviews}px)`;
+        animationFrameId = requestAnimationFrame(scrollTestimonials);
     }
 
-    setInterval(scrollTestimonials, 20); // Kecepatan scroll (20ms)
+    function startAnimation() {
+        if (!animationFrameId) {
+            animationFrameId = requestAnimationFrame(scrollTestimonials);
+        }
+    }
+
+    function stopAnimation() {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+    }
+
+    // Mulai animasi saat halaman dimuat
+    startAnimation();
+
+    // Hentikan animasi saat tab tidak aktif
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            stopAnimation();
+        } else {
+            startAnimation();
+        }
+    });
 
     // Portfolio Slider
     const track_porto = document.querySelector(".portfolio-track");
@@ -53,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemWidth = items_porto[0].offsetWidth + 15; // Lebar item + margin
 
     let position_porto = 0;
+    let animationFrameIdPorto;
 
     function scrollPortfolio() {
         position_porto += 1; // Geser ke kanan
@@ -60,7 +85,57 @@ document.addEventListener("DOMContentLoaded", function () {
             position_porto = 0; // Kembali ke awal jika sudah mencapai akhir
         }
         track_porto.style.transform = `translateX(-${position_porto}px)`;
+        animationFrameIdPorto = requestAnimationFrame(scrollPortfolio);
     }
 
-    setInterval(scrollPortfolio, 20); // Kecepatan scroll (20ms)
+    function startAnimationPorto() {
+        if (!animationFrameIdPorto) {
+            animationFrameIdPorto = requestAnimationFrame(scrollPortfolio);
+        }
+    }
+
+    function stopAnimationPorto() {
+        if (animationFrameIdPorto) {
+            cancelAnimationFrame(animationFrameIdPorto);
+            animationFrameIdPorto = null;
+        }
+    }
+
+    // Mulai animasi saat halaman dimuat
+    startAnimationPorto();
+
+    // Hentikan animasi saat tab tidak aktif
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            stopAnimationPorto();
+        } else {
+            startAnimationPorto();
+        }
+    });
+
+    // Optimasi untuk Safari: Paksa hardware acceleration
+    track_porto.style.backfaceVisibility = "hidden";
+    track_porto.style.perspective = "1000px";
+
+    // Tombol Navigasi untuk Portfolio Slider
+    const prevButton = document.querySelector(".slider-prev");
+    const nextButton = document.querySelector(".slider-next");
+
+    if (prevButton && nextButton) {
+        prevButton.addEventListener("click", () => {
+            position_porto -= itemWidth;
+            if (position_porto < 0) {
+                position_porto = itemWidth * (items_porto.length - 1);
+            }
+            track_porto.style.transform = `translateX(-${position_porto}px)`;
+        });
+
+        nextButton.addEventListener("click", () => {
+            position_porto += itemWidth;
+            if (position_porto >= itemWidth * items_porto.length) {
+                position_porto = 0;
+            }
+            track_porto.style.transform = `translateX(-${position_porto}px)`;
+        });
+    }
 });
