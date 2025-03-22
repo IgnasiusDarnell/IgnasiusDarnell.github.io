@@ -1,0 +1,6 @@
+# robots.txt untuk https://bengkelanugerah.vercel.app/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://bengkelanugerah.vercel.app/sitemap.xml
